@@ -24,7 +24,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 app = Flask(__name__)
-CORS(app)
+
 
 q = queue.Queue()
 
