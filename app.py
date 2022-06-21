@@ -13,18 +13,18 @@ from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.pipeline import Pipeline, FeatureUnion
-import os
+
 import queue
-import sounddevice as sd
+
 import psycopg2
-import vosk
-import sys
+
 import gc
 import sys
-import pyttsx3
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QMessageBox
 import warnings
 warnings.filterwarnings('ignore')
+
+app = Flask(__name__)
+CORS(app)
 
 q = queue.Queue()
 
@@ -227,12 +227,13 @@ li = ["What is the duration of each program?",
 "Will I be considered an alumnus of RACE after completing a short-term program?"]
 
 
-app = Flask(__name__)
-CORS(app)
+
 
 
 qnnoglobal = 0
 questionasked = ""
+
+#We here are not fetching from Data base
 def fetchqnno(qnno):
     #connecting to data base
     conn = psycopg2.connect( 
